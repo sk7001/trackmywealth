@@ -1,0 +1,7 @@
+# .gitignore sevrer
+server/node_modules
+server/.env
+
+# .gitignore client
+client/node_modules
+client/.env
