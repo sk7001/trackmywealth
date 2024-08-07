@@ -45,6 +45,10 @@ function Register() {
       toast.error("Password must be atleast 8 characters and must include at least one special character and one number.");
       return;
     }
+    if(!userDetails.password===userDetails.confirmPassword){
+      toast.error("Passwords do not match");
+      return
+    }
 
     try {
       toast.loading("Signing up")
@@ -79,15 +83,15 @@ function Register() {
       <div className="FormContainer">
         <h2>Signup</h2>
         <div className="InputContainer">
-          <input value={userDetails.username} name="username" type="text" onChange={handleonchange} placeholder="User Name" autocomplete="off" />
-          <input value={userDetails.phonenumber} name="phonenumber" type="number" className="no-arrow" onChange={handleonchange} placeholder="Phone Number (Including Country Code)" autocomplete="off" />
-          <input value={userDetails.email} name="email" type="text" onChange={handleonchange} placeholder="E-Mail" autocomplete="off" />
+          <input value={userDetails.username} name="username" type="text" onChange={handleonchange} placeholder="User Name" />
+          <input value={userDetails.phonenumber} name="phonenumber" type="number" className="no-arrow" onChange={handleonchange} placeholder="Phone Number (Including Country Code)" />
+          <input value={userDetails.email} name="email" type="text" onChange={handleonchange} placeholder="E-Mail" />
           <div className="PasswordContainer">
-            <input value={userDetails.password} name="password" type={showp ? "text" : "Password"} onChange={handleonchange} placeholder="Password" autocomplete="off" />
+            <input value={userDetails.password} name="password" type={showp ? "text" : "Password"} onChange={handleonchange} placeholder="Password" />
             <button onClick={handleshowp}>{showp ? "HIDE" : "SHOW"}</button>
           </div>
           <div className="PasswordContainer">
-            <input value={userDetails.confirmPassword} name="confirmPassword" type={showcp ? "text" : "Password"} onChange={handleonchange} placeholder="Password" autocomplete="off" />
+            <input value={userDetails.confirmPassword} name="confirmPassword" type={showcp ? "text" : "Password"} onChange={handleonchange} placeholder="Password" />
             <button onClick={handleshowcp}>{showcp ? "HIDE" : "SHOW"}</button>
           </div>
           <button onClick={handleonclick}>Signup</button>
