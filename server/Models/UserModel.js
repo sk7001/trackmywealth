@@ -1,37 +1,37 @@
-const mongoose=require("mongoose")
+const mongoose = require("mongoose")
 
 const UserSchema = new mongoose.Schema(
     {
-        username:{
-            type:String
+        username: {
+            type: String
         },
-        image:{
-            type:String
+        profilepic: {
+            type: String
         },
-        phonenumber:{
-            type:Number
+        phonenumber: {
+            type: Number
         },
-        email:{
-            type:String,
-            unique:true
+        email: {
+            type: String,
+            unique: true
         },
-        password:{
-            type:String
+        password: {
+            type: String
         },
-        isVerified:{
-            type:Boolean,
-            default:false
+        isVerified: {
+            type: Boolean,
+            default: false
         },
-        OTP_VerificationToken:{
-            OTP:String,
-            expires:Date
+        OTP_VerificationToken: {
+            OTP: String,
+            expires: Date
         },
-        VerificationToken:{
+        VerificationToken: {
             token: String,
-            expires:Date
+            expires: Date
         }
     }
 )
 
-const UserModel=mongoose.model('Users',UserSchema)
-module.exports =UserModel
+const UserModel = mongoose.model('Users', UserSchema)
+module.exports = UserModel

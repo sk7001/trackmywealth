@@ -4,6 +4,7 @@ const bcrypt = require("bcrypt")
 const sendEmail = require("../Emailservice/Email")
 const jwt = require("jsonwebtoken")
 const { response } = require("express")
+const cloudinary = require("../configurations/config_cloudinary")
 
 const register = async (req, res) => {
     try {
@@ -334,4 +335,35 @@ const getUser = async (req, res) => {
         res.status(500).json({ message: "Something went wrong" })
     }
 }
-module.exports = { register, login, verifyUser, resendVerification, updateUser, forgotPassword, verifyPasswordOTP, updatePassword, getUser }
+
+const uploadImage = async (req, res) => {
+    console.log(req.body)
+    try {
+        console.log(req.body)
+        const image = req.body.file
+        const email = req.body.email
+        const result = await cloudinary.uploader.upload(image,
+            {
+                upload_preset: process.env.CLOUDINARY_UPLOAD_PRESET,
+                resource_type: "image",
+                allowed_formats: ['png', 'jpg', 'jpeg'],
+                transformation: [
+                    {
+                        width: 1000,
+                        height: 1000,
+                        crop: "limit",
+                    }
+                ]
+            }
+        )
+        const user = await UserModel.findOne({ email: email })
+        if (!user) {
+            return res.status(400).json({ message: "User not found" })
+        }
+        user.profilepic=result.url
+        res.status(200).json({ result, user, message: "Image recieved successfully" })
+    } catch (error) {
+        res.status(500).json(error)
+    }
+};
+module.exports = { register, login, verifyUser, resendVerification, updateUser, forgotPassword, verifyPasswordOTP, updatePassword, getUser, uploadImage }

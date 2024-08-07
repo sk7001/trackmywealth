@@ -19,6 +19,7 @@
 .InputContainer {
     display: flex;
     flex-direction: column;
+    justify-content: center;
     row-gap: 1rem;
     width: 100%;
 }
@@ -116,3 +117,13 @@
     -webkit-appearance: none;
     margin: 0;
 }
+
+.Container .FormContainer .InputContainer .profilepic {
+    width: 10rem;
+    height: 10rem;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 1vh;
+    align-self: center;
+}
+
