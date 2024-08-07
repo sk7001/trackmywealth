@@ -1,12 +1,14 @@
 import axios from 'axios';
 import React, { useCallback, useEffect, useState } from 'react'
-import {useNavigate} from "react-router-dom"
+import { useNavigate } from "react-router-dom"
+import "./Home.css";
 
 export default function Home() {
   const navigate = useNavigate();
   const [user, setUser] = useState({
     name: "",
-    email: ""
+    email: "",
+    profilepic: ""
   })
   const getUser = useCallback(async () => {
     try {
@@ -16,8 +18,10 @@ export default function Home() {
       });
       setUser({
         name: response.data.name,
-        email: response.data.email
+        email: response.data.email,
+        profilepic: response.data.profilepic
       });
+      console.log(response.data)
     } catch (error) {
       console.log(error);
     }
@@ -32,12 +36,18 @@ export default function Home() {
 
   }
   return (
-    <div>
-      <nav className='nav'>
-        <p>Hello {user.name}</p>
-      </nav>
-      <h1>Welcome to my website</h1>
-      <button onClick={handleOnLogout}>Logout</button>
+    <div className="Container">
+      <div className="FormContainer">
+        <nav className='nav'>
+          <h1>Hello {user.name}</h1>
+        </nav>
+        <div className='InputContainer'>
+          <h2>Welcome to TrackMyWealth</h2>
+          <img src={user.profilepic} alt='profilepic' className='profilepic' />
+          <p style={{textAlign:'center'}}><b>Email: </b>{user.email}</p>
+          <button onClick={handleOnLogout}>Logout</button>
+        </div>
+      </div>
     </div>
   )
 }
