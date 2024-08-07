@@ -13,7 +13,7 @@ const register = async (req, res) => {
         console.log(isUserExisting)
         if (isUserExisting) {
             console.log(`User with the email ${req.body.email} already exists`)
-            res.status(400).json({ message: `User with the email ${req.body.email} already exists` })
+            res.status(201).json({ message: `User with the email ${req.body.email} already exists` })
             return
         }
 
@@ -39,15 +39,18 @@ const register = async (req, res) => {
 
         await newUser.save()
 
-        const emailBody = `<p> Please click on the link to verify your account. <b>${process.env.SERVER_URL}/user/verify/${verificationToken}</b></p>`;
-        const subject = 'Verification Email'
+        const emailBody = `<p> Please click on the link to verify your account.</p>
+         <b><a href="${process.env.SERVER_URL}/user/verify/${verificationToken}" style="text-decoration: none; color: #007bff;">Verify Your Email</a></b>
+         <p>We're glad you're here!</p>
+         <p>The TrackMyWealth team</p>`;
+        const subject = 'TrackMyWealth Verification Email'
         await sendEmail(req.body.email, subject, emailBody).then(response => {
             console.log('Email sent successfully:', response);
         }).catch(error => {
             console.error('Error sending email:', error);
         });
 
-        res.status(200).json({ message: "User saved succssfully" });
+        res.status(200).json({ message: "User saved successfully. Verification mail has been sent to your mail." });
     } catch (error) {
         res.status(400).json(error)
     }
