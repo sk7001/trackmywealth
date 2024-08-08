@@ -338,7 +338,6 @@ const getUser = async (req, res) => {
 const uploadImage = async (req, res) => {
     console.log(req.body)
     try {
-        console.log(req.body)
         const image = req.body.file
         const email = req.body.email
         const result = await cloudinary.uploader.upload(image,
