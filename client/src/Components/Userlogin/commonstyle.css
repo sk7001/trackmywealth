@@ -1,5 +1,8 @@
 .Container {
     height: 100vh;
+    background: -webkit-linear-gradient(-130deg, rgb(250, 250, 192), rgba(0, 0, 202, 0.644), rgb(92, 92, 92));
+    background-size: cover;
+    background-position: center;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -7,13 +10,16 @@
 }
 
 .FormContainer {
-    box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
+    color: white;
+    background-color: rgba(48, 48, 48, 0.699);
+    box-shadow: rgba(0, 0, 0, 0.233) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
     display: flex;
     flex-direction: column;
     min-width: 380px;
     padding: 2rem;
     border-radius: 20px;
     align-items: center;
+    transition: 200ms;
 }
 
 .InputContainer {
@@ -29,26 +35,41 @@
 }
 
 .FormContainer a {
-    color: red;
+    color: rgb(255, 255, 255);
     text-decoration: none;
     padding-top: 8px;
     transition-duration: 300ms;
 }
 
 .FormContainer a:hover {
-    color: rgb(158, 0, 0);
+    color: rgba(255, 255, 255, 0.521);
 }
 
 .InputContainer>input {
-    padding: 10px;
+    background-color: transparent;
+    -webkit-text-fill-color: rgba(200, 200, 200, 0.726);
+    padding: 15px;
     border-radius: 10px;
-    border: none;
+    border: solid;
+    border-width: 1px;
+    border-color: rgb(200, 200, 200);
     box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
     transition-duration: 120ms;
 }
 
 .InputContainer>input:hover {
-    scale: 1.1;
+    scale: 1.05;
+}
+
+.InputContainer>input:-webkit-autofill {
+    background-color: rgba(48, 48, 48, 0.699) !important;
+    /* Match the background color of your form */
+    -webkit-text-fill-color: rgba(200, 200, 200, 0.726) !important;
+    /* Match the text color */
+    border-color: rgb(200, 200, 200) !important;
+    /* Match the border color */
+    transition: background-color 5000s ease-in-out 0s;
+    /* Prevent flicker of background color */
 }
 
 .InputContainer>button {
@@ -76,28 +97,39 @@
 }
 
 .PasswordContainer input {
-    padding: 10px;
+    padding: 15px;
+    background-color: transparent;
+    -webkit-text-fill-color: rgb(200, 200, 200);
     border-radius: 10px;
-    border: none;
+    border: solid;
+    border-width: 1px;
+    border-color: rgb(200, 200, 200);
     box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
     transition-duration: 120ms;
     width: 100%;
 }
 
 .PasswordContainer>input:hover {
-    scale: 1.1;
+    scale: 1.05;
+}
+
+.PasswordContainer input:-webkit-autofill {
+    background-color: rgba(48, 48, 48, 0.699) !important;
+    -webkit-text-fill-color: rgb(200, 200, 200) !important;
+    border-color: rgb(200, 200, 200) !important;
+    transition: background-color 5000s ease-in-out 0s;
 }
 
 .PasswordContainer button {
+    -webkit-text-fill-color: rgb(200, 200, 200);
     position: absolute;
-    top: 0;
+    top: 5px;
     right: 0;
     padding: 10px;
     border-radius: 10px;
     border: none;
     outline: none;
     margin-bottom: 10px;
-    align-self: center;
     transition-duration: 400ms;
     cursor: pointer;
     background: none;
@@ -127,3 +159,14 @@
     align-self: center;
 }
 
+.social {
+    display: flex;
+    flex-direction: column;
+    margin: 10px;
+    transition: 200ms;
+    align-items: center;
+}
+
+.social:hover {
+    scale: 1.2;
+}

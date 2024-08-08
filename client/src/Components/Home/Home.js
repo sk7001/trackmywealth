@@ -32,12 +32,9 @@ export default function Home() {
   }, [getUser]);
 
   return (
-    <div className="Container">
+    <div className="homeContainer">
       <Taskbar name={user.name} profilepic={user.profilepic}/>
-      <div className="FormContainer">
-        <div className='InputContainer'>
-          <h2>Welcome to TrackMyWealth</h2>
-        </div>
+      <div>
       </div>
     </div>
   )

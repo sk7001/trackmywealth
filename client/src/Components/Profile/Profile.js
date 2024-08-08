@@ -1,7 +1,6 @@
 import axios from 'axios';
 import React, { useCallback, useEffect, useState } from 'react'
 import { Link, useNavigate } from "react-router-dom"
-import Taskbar from '../../objects/Taskbar';
 import toast from 'react-hot-toast';
 
 export default function Profile() {
@@ -27,7 +26,7 @@ export default function Profile() {
             console.log(user)
         } catch (error) {
             console.log(error);
-        }// eslint-disable-next-line
+        }
     }, []);
     useEffect(() => {
         getUser();
@@ -52,7 +51,6 @@ const ViewProfile = ({ setStep, user }) => {
     }
     return (
         <div className="Container">
-            <Taskbar profilepic={user.profilepic} />
             <div className="FormContainer">
                 <nav className='nav'>
                     <h1>Hello {user.name}</h1>

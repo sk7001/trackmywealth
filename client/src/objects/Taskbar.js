@@ -18,6 +18,7 @@ export default function Taskbar(props) {
     return (
         <div className='hnavbar'>
             <img src={props.profilepic} onClick={handleOnProfile} alt='profilepicture'/>
+            <h3>TrackMyWealth</h3>
             <button onClick={handleOnLogout} className='logout'>Logout</button>
         </div>
     )

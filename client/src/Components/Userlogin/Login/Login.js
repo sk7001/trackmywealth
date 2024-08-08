@@ -1,5 +1,4 @@
 import { Link, useNavigate } from "react-router-dom";
-import "./Login.css"
 import { useState } from "react";
 import toast from "react-hot-toast";
 import axios from "axios";
@@ -12,7 +11,7 @@ function Login() {
   const [userDetails, setuserDetails] = useState({
     email: "",
     password: "",
-    profilepic:""
+    profilepic: ""
   })
   const [show, setshow] = useState(false)
 
@@ -89,9 +88,7 @@ function Login() {
       <div className="FormContainer">
         <h2>Login</h2>
         <div className="social">
-          <div>
-            <GoogleLoginButton onClick={handleContinueWithGoogle}></GoogleLoginButton>
-          </div>
+            <GoogleLoginButton style={{width:"46px", height:"46px",borderRadius:"100%" }} text="" onClick={handleContinueWithGoogle}></GoogleLoginButton>
         </div>
         <div className="InputContainer">
           <input value={userDetails.email} name="email" type="email" onChange={handleonchange} placeholder="E-Mail" />

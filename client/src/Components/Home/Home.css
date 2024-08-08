@@ -1,0 +1,7 @@
+.homeContainer{
+    position: absolute;
+    top: 0;
+    width: 100vw;
+    height: 100vh;
+    background: linear-gradient(to bottom, rgba(0, 0, 255, 0.473), rgba(0, 0, 255, 0.250), rgba(0, 0, 255, 0.150), rgba(0, 0, 255, 0.100), white, white, white, white, white, white, white);
+}
