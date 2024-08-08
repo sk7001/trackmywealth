@@ -69,7 +69,7 @@ const login = async (req, res) => {
                     email: req.body.email,
                     username: req.body.username,
                     password: hashPassword,
-                    profilepic:req.body.profilepic,
+                    profilepic: req.body.profilepic,
                     isVerified: true
                 })
                 console.log(newUser)
@@ -326,7 +326,8 @@ const getUser = async (req, res) => {
         const userDetails = {
             name: user.username,
             email: user.email,
-            profilepic: user.profilepic
+            profilepic: user.profilepic,
+            phonenumber: user.phonenumber
         }
         res.status(200).json(userDetails)
     } catch (error) {
@@ -365,4 +366,29 @@ const uploadImage = async (req, res) => {
         res.status(500).json(error)
     }
 };
-module.exports = { register, login, verifyUser, resendVerification, updateUser, forgotPassword, verifyPasswordOTP, updatePassword, getUser, uploadImage }
+
+const deleteAccount = async (req, res) => {
+    try {
+        console.log(req.body)
+        const user = await UserModel.findOneAndDelete({ email: req.body.email })
+        if (!user) {
+            return res.status(400).json({ message: "User not found" })
+        }
+        const isPasswordValid = await bcrypt.compare(req.body.password, user.password)
+        if (!isPasswordValid) {
+            return res.status(400).json({ message: `Invalid Password` });
+        }
+        const emailBody = `<p>Your account has been deleted successfully.</p>`;
+        const subject = 'Deletion of TrackMyWealth Account'
+        await sendEmail(req.body.email, subject, emailBody).then(response => {
+            console.log('Email sent successfully:', response);
+        }).catch(error => {
+            console.error('Error sending email:', error);
+        });
+        res.status(200).json({ message: "User deleted successfully." })
+    } catch (error) {
+        console.log(error)
+        res.status(400).json({ message: "Something went wrong while deleting the user. Please try again later" })
+    }
+}
+module.exports = { register, login, verifyUser, resendVerification, updateUser, forgotPassword, verifyPasswordOTP, updatePassword, getUser, uploadImage, deleteAccount }

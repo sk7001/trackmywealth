@@ -1,0 +1,47 @@
+.hnavbar {
+    position: absolute;
+    top: 0px;
+    background-color: red;
+    width: 100%;
+    padding: 1vh;
+    display: flex;
+    flex-direction: row;
+    align-content: center;
+}
+
+.hnavbar img {
+    border-radius: 100%;
+    width: 3.5rem;
+    height: 3.5rem;
+    margin: 0.5rem 1rem;
+    transition: 200ms;
+    cursor: pointer;
+}
+
+.hnavbar img:hover {
+    scale: 1.2;
+
+}
+
+.hnavbar .logout {
+    height: 3rem;
+    width: 4rem;
+    position: absolute;
+    right: 15px;
+    background-color: darkred;
+    padding: 10px;
+    border-radius: 10px;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    color: white;
+    width: 150px;
+    align-self: center;
+    transition-duration: 400ms;
+}
+
+.hnavbar .logout:hover {
+    background-color: rgb(158, 0, 0);
+    width: 10rem;
+    align-self: center;
+}

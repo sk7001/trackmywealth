@@ -1,11 +1,12 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import './App.css';
 import Register from './Components/Userlogin/Register/Register';
-import Home from './Components/Userlogin/Home/Home';
 import Auth from './Utils/Auth';
 import Forgotpass from './Components/Userlogin/Forgetpass/Forgetpass';
 import ResendVerification from './Components/Userlogin/ResendVerification/ResendVerification';
 import Login from './Components/Userlogin/Login/Login';
+import Home from './Components/Home/Home';
+import Profile from './Components/Profile/Profile';
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
         <Route path='/resendverificationlink' element={<ResendVerification/>}/>
         <Route element={<Auth />}>
           <Route path='/home' element={<Home />} />
+          <Route path='/profile' element={<Profile/>}/>
         </Route>
         <Route path='*'element={<h2>404 Page not found</h2>} />
       </Routes>
