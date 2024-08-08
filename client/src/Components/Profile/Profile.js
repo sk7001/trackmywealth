@@ -27,7 +27,7 @@ export default function Profile() {
         } catch (error) {
             console.log(error);
         }
-    }, []);
+    }, [user]);
     useEffect(() => {
         getUser();
     }, [getUser]);
